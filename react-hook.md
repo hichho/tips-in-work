@@ -35,7 +35,6 @@
     lastRenderedReducer: ((S, A) => S) | null,
     lastRenderedState: S | null,
     |};
-    ``` 
 
 属性解释:
 
