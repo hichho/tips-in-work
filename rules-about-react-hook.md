@@ -38,12 +38,14 @@
 
 属性解释:
 
-Hook memoizedState: 内存状态, 用于输出成最终的fiber树 (fiber是一个在reconciler里的对象)。 baseState: 基础状态, 当Hook.queue更新过后, baseState也会更新。   
+Hook memoizedState: 内存状态, 用于输出成最终的fiber树 (fiber是一个在reconciler里的对象)。  
+baseState: 基础状态, 当Hook.queue更新过后, baseState也会更新。   
 baseQueue:基础状态队列, 在reconciler阶段会辅助状态合并。  
-queue: 指向一个Update队列。  
-next: 指向该function组件的下一个Hook对象, 使得多个Hook之间也构成了一个链表。
+queue: 指向一个Update队列。
 
-## 所以，当我们有多个hook，function 在多次执行的时候，hook的指向发生变化，当然不能正确的执行啦！
+### next: 指向该function组件的下一个Hook对象, 使得多个Hook之间也构成了一个链表。
+
+### 所以，当我们有多个hook，function 在多次执行的时候，hook的指向发生变化，就不能正确的执行啦！
 
 Hook.queue和 Hook.baseQueue(即UpdateQueue和Update）是为了保证Hook对象能够顺利更新,fiber.updateQueue中的UpdateQueue和  
 Update是不一样的(且它们在不同的文件)。  
